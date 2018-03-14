@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    form(action="/add" method="post")
+        label 姓名:
+        input(type="text" name="name" id="name")
+        label 生源地:
+        input(type="text" name="address" id="address")
+        input(type="submit" value="提交" id="ok_btn")
+    //script(src="/javascripts/add.js")

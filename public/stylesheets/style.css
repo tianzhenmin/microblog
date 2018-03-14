@@ -1,0 +1,38 @@
+body,h1,h2,h3,h4,h5,h6,p,ul{
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #00B7FF;
+}
+.blank{ 
+  clear:both; 
+  overflow:hidden; 
+  display:block; 
+  overflow:hidden;
+  height: 70px;
+}
+
+.common-head{
+  font-size: 16px;
+  color: #282828;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  transition: height .5s ease,line-height .5s ease;
+  height: 70px;
+  line-height: 70px;
+}
+
+.header{
+  list-style: none;
+}
+.header li{
+  float:left;
+  margin: 0 10px;
+}

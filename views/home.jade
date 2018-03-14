@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    section.content
+        div.search-box
+        table.table(cellpadding='0', cellspacing='0')
+            tr  
+                th 姓名
+                th 生源地
+                th 操作
+        div.btn-box
+        p
+            a(href="/add") 添加
+    script(src='/javascripts/settings.js')
+    link(rel='stylesheet', href='/stylesheets/home.css')

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    form(action="/update" method="post")
+        input(type="hidden" name="id" value=datas[0].id)
+        label 姓名:
+        input(type="text" name="name" value=datas[0].name)
+        label 地址：
+        input(type="text" name="address" value=datas[0].address)
+        input(type="submit" value="提交")

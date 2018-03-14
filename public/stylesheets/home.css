@@ -1,0 +1,71 @@
+a{
+    display: inline-block;
+    margin:5px;
+    border: 1px solid #dcdcdc;
+    min-width:20px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+    color: #fff;
+    background-color: rgb(13, 138, 221);
+}
+.table:hover{
+    cursor:pointer;
+}
+th{
+    background-color: cornflowerblue;
+}
+tr{
+    height: 40px;
+    line-height: 40px;
+}
+tr:nth-of-type(odd){
+    background-color: #dcdcdc;
+}
+.td, th{
+    text-align: center;
+    min-width: 200px;
+}
+.td:hover{
+    color:blue;
+}
+
+.search-box{
+    padding:10px 0;
+}
+.search-text{
+    background-color: #dcdcdc;
+    height: 30px;
+    width: 200px;
+    border: none;
+    font-size: 100%;
+    padding-left: 5px;
+}
+.search-btn{
+    height: 32px;
+    width: 65px;
+    text-align: center;
+    line-height: 30px;
+    margin-left: 10px;
+    background: lightblue;
+    display: inline-block;
+    color: #fff;
+}
+.search-btn:hover{
+    background-color: aqua;
+}
+.checked{
+    background-color: rgb(13, 138, 221);
+    color: #fff;
+}
+.select-box{
+    height: 32px;
+    width: 100px;
+    line-height: 32px;
+    font-size: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}

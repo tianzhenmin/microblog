@@ -33,7 +33,7 @@ router.get('/add', function(req, res, next) {
 router.post('/add', function (req, res) {
     var name = req.body.name;
     var address = req.body.address;
-    db.query(`INSERT INTO websites (name,address) VALUES ("${name}","${address}")`, function (err, rows) {
+    db.query('INSERT INTO websites (name,address) VALUES ("' + name + '","' + address + '")', function (err, rows) {
         if (err) {
             res.end('新增失败：' + err);
         } else {

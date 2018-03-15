@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var home = require('./routes/home');
+var login = require('./routes/login');
 var app = express();
 
 // view engine setup
@@ -31,6 +32,7 @@ app.get('/del/:id', home);
 app.get('/toUpdate/:id', home);
 app.post('/add', home);
 app.post('/update', home);
+app.post('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

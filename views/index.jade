@@ -1,6 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a(href="/home") 主页面
+  section.container
+    h1
+    a(href="/home") 主页面
+  style.
+    .container{
+      background: url(/images/lg.jpg) center center no-repeat;
+      background-size: 100%;
+    }
+

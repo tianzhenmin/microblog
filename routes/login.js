@@ -7,7 +7,7 @@ router.post('/login', function(req, res, next) {
     var password = req.body.password;
     console.log(username);
     if(username == 'admin' && password == 'admin'){
-        res.send({status:200, url:"/"});
+        res.send({status:200, url:"/home"});
     } else {
         res.send({status:500});
     }

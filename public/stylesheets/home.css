@@ -75,3 +75,11 @@ tr:nth-of-type(odd){
     vertical-align: middle;
     margin-left: 10px;
 }
+
+.content{
+    text-align: center;
+}
+
+.content table{
+    margin: auto;
+}

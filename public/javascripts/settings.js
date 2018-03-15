@@ -1,3 +1,4 @@
+
 var globalData = [];
 var page_size = 5;
 var custom_page = 0;
@@ -56,7 +57,11 @@ function searchD(){
 function pre(){
     custom_page--;
     if(custom_page < 0){
-        alert('已没有上一页');
+        $('.pageSign').html('已没有上一页');
+        $('.pageSign').fadeIn();
+        setTimeout(function(){
+            $('.pageSign').fadeOut();
+        },2000);
         custom_page++;
     }
     $(".table tr:gt(0)").remove();
@@ -71,7 +76,11 @@ function pre(){
 function next(){
     custom_page++;
     if(custom_page > (page_num-1)){
-        alert('已没有下一页');
+        $('.pageSign').html('已没有下一页');
+        $('.pageSign').fadeIn();
+        setTimeout(function(){
+            $('.pageSign').fadeOut();
+        },2000);
         custom_page--;
     }
     $(".table tr:gt(0)").remove();

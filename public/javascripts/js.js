@@ -14,20 +14,20 @@ $('.pop').on('click', function(){
 })
 
 $('.login').on('click', function(){
-    $('.pop-login').show();
+    $('.pop-login').fadeIn();
     $('.log-message').empty();
 })
 
 $('.regist').on('click', function(){
-    $('.pop-reg').show();
+    $('.pop-reg').fadeIn();
     $('.log-message').empty();
 })
 
 if($('.mask')){
     $('.mask').on('click', function(){
+        $('.pop-login').fadeOut();
+        $('.pop-reg').fadeOut();
         $('.mask').hide();
-        $('.pop-login').hide();
-        $('.pop-reg').hide();
     })
 }
 

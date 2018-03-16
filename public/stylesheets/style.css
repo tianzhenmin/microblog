@@ -103,11 +103,11 @@ a {
   border: 1px solid #ccc;
 }
 
-.alertWin p:last-child input{
+.alertWin input.btn{
   color: #fff;
   background: rgb(81, 170, 246);
 }
 
-.alertWin p:last-child input:hover{
+.alertWin input.btn:hover{
   background: rgb(69, 97, 157);
 }

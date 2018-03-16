@@ -14,24 +14,26 @@ $('.pop').on('click', function(){
 })
 
 $('.login').on('click', function(){
+    $('.pop-reg').hide();
     $('.pop-login').fadeIn();
     $('.log-message').empty();
 })
 
 $('.regist').on('click', function(){
+    $('.pop-login').hide();
     $('.pop-reg').fadeIn();
     $('.log-message').empty();
 })
 
 if($('.mask')){
     $('.mask').on('click', function(){
-        $('.pop-login').fadeOut();
-        $('.pop-reg').fadeOut();
+        $('.pop-login').hide();
+        $('.pop-reg').hide();
         $('.mask').hide();
     })
 }
 
-var postInfo = function(){
+var postLoginInfo = function(){
     var username = $('.pop-login #username').val();
     var psd = $('.pop-login #password').val();
     $.ajax({
@@ -43,6 +45,7 @@ var postInfo = function(){
             if(data.status===200){
                 window.location.href = data.url;
             }else{
+                $('.error').html(data.message);
                 $('.error').fadeIn();
                 setTimeout(function(){
                     $('.error').fadeOut();
@@ -54,11 +57,38 @@ var postInfo = function(){
     });
 }
 
-$('.login-btn').on('click', postInfo)
+var postRegInfo = function(){
+    var username = $('.pop-reg #username').val();
+    var psd = $('.pop-reg #password').val();
+    $.ajax({
+        type:'post',
+        url:"/regist",
+        dataType: 'json',
+        data: {"username" : username, "password" : psd},
+        success: function(data){
+            if(data.status===200){
+                location.reload();
+                $('.login').trigger('click');
+            }else{
+                $('.error').html(data.message);
+                $('.error').fadeIn();
+                setTimeout(function(){
+                    $('.error').fadeOut();
+                },2500)
+                $('.pop-reg #username').val('');
+                $('.pop-reg #password').val('');
+            }
+        }
+    });
+}
 
+$('.login-btn').on('click', postLoginInfo)
+$('.reg-btn').on('click', postRegInfo)
 $(document).keyup(function (e) {//捕获文档对象的按键弹起事件
     if (e.keyCode == 13) {//按键信息对象以参数的形式传递进来了
         //此处编写用户敲回车后的代码
-        postInfo();
+        if($('.pop-reg').css('display') !== 'none'){postRegInfo();}
+        if($('.pop-login').css('display') !== 'none'){postLoginInfo();}
+
     }
 });

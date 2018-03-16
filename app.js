@@ -33,6 +33,7 @@ app.get('/toUpdate/:id', home);
 app.post('/add', home);
 app.post('/update', home);
 app.post('/login', login);
+app.post('/regist', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

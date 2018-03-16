@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var mysql = express.Router('mysql');
-var db = require('./db.js')
+var db = require('./db.js');
+var session = require('express-session');
+router.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: true, cookie: {maxAge: 60000}}));
 
 /* GET home page. */
 router.post('/login', function(req, res, next) {
@@ -12,7 +14,9 @@ router.post('/login', function(req, res, next) {
             res.end('登陆出错');
         } else{
             if(rows.length>0){
-                res.send({status: 200, url: '/home'});
+                res.send({status: 200, url: '/home', isLogin: true});
+                req.session.user = username;
+                console.log(req.session.user);
             } else{
                 res.send({status: 500, message: '用户名或密码错误，请重试!'});
             }

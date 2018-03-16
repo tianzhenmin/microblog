@@ -41,6 +41,10 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+app.use(function(req, res, next){
+    res.locals.session = req.session;
+    next();
+});
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -52,7 +56,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-console.log('app.js');
 
 module.exports = app;

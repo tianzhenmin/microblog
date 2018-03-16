@@ -10,11 +10,18 @@ html
       ul.header
         li 
           a(href="/") 首页
-        li 关于
-        li.login.pop
-          a(href="javascript:void(0)") 登录
-        li.regist.pop
-          a(href="javascript:void(0)") 注册
+        li
+          a(href="/home") 关于
+        -if(user)
+          li.login.pop
+            a(href="javascript:void(0)") 用户
+          li.regist.pop
+            a(href="javascript:void(0)") 注销
+        -else
+          li.login.pop
+            a(href="javascript:void(0)") 登录
+          li.regist.pop
+            a(href="javascript:void(0)") 注册
     <span class="blank"></span>
     div.mask
     section.pop-login.alertWin

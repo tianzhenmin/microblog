@@ -8,7 +8,7 @@ function fitScreen(){
 }
 
 fitScreen();
-
+var isLogin;
 $('.pop').on('click', function(){
     $('.mask').show();
 })
@@ -89,6 +89,5 @@ $(document).keyup(function (e) {//捕获文档对象的按键弹起事件
         //此处编写用户敲回车后的代码
         if($('.pop-reg').css('display') !== 'none'){postRegInfo();}
         if($('.pop-login').css('display') !== 'none'){postLoginInfo();}
-
     }
 });

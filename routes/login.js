@@ -3,7 +3,12 @@ var router = express.Router();
 var mysql = express.Router('mysql');
 var db = require('./db.js');
 var session = require('express-session');
-router.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: true, cookie: {maxAge: 60000}}));
+var redisStore = require('connect-redis')(session);
+var cookieParser = require('cookie-parser');
+var app = require('../app');
+
+router.use(session({secret: 'keyboard cat', store: new redisStore()}));
+router.use(cookieParser());
 
 /* GET home page. */
 router.post('/login', function(req, res, next) {
@@ -14,9 +19,11 @@ router.post('/login', function(req, res, next) {
             res.end('登陆出错');
         } else{
             if(rows.length>0){
-                res.send({status: 200, url: '/home', isLogin: true});
+                res.send({status: 200, url: '/home'});
                 req.session.user = username;
-                console.log(req.session.user);
+                res.locals.name = 'sss';
+                console.log(req.session);
+                console.log(res.locals);
             } else{
                 res.send({status: 500, message: '用户名或密码错误，请重试!'});
             }

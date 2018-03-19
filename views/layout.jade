@@ -8,11 +8,12 @@ html
   body
     header.common-head
       ul.header
-        li 
+        li= name
+        li
           a(href="/") 首页
         li
           a(href="/home") 关于
-        -if(user)
+        -if(name)
           li.login.pop
             a(href="javascript:void(0)") 用户
           li.regist.pop

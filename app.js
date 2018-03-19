@@ -4,13 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var session = require('express-session');
+var redisStore = require('connect-redis')(session);
 var index = require('./routes/index');
 var users = require('./routes/users');
 var home = require('./routes/home');
 var login = require('./routes/login');
 var app = express();
-
+app.use(session({secret: 'keyboard cat', store: new redisStore()}));
+// app.use(function(req, res, next){
+//     console.log(req.session);
+//     app.locals.name = 'sss';
+//     next();
+// })
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -40,10 +46,6 @@ app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-});
-app.use(function(req, res, next){
-    res.locals.session = req.session;
-    next();
 });
 
 // error handler

@@ -67,8 +67,14 @@ var postRegInfo = function(){
         data: {"username" : username, "password" : psd},
         success: function(data){
             if(data.status===200){
-                location.reload();
-                $('.login').trigger('click');
+                //location.href = '/';
+                $('.error').html('注册成功，正在为您跳转登录界面...');
+                $('.error').fadeIn();
+                setTimeout(function(){
+                    $('.error').fadeOut();
+                    $('.login').trigger('click');
+                },2500)
+
             }else{
                 $('.error').html(data.message);
                 $('.error').fadeIn();

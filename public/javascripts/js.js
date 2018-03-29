@@ -4,7 +4,7 @@ function fitScreen(){
     var headerHeight = $("header").height();
     var footerHeight = $("footer").height();
     var bodyHeight = windowHeight - headerHeight - footerHeight;
-    $('.container').css('min-height', bodyHeight + 'px')
+    $('.container,.content').css('min-height', bodyHeight + 'px')
 }
 
 fitScreen();
@@ -88,8 +88,19 @@ var postRegInfo = function(){
     });
 }
 
+var logout = function(){
+    $.ajax({
+        type: 'get',
+        url: "/logout",
+        success: function(data){
+            window.location.href = data.url;
+        }
+    })
+}
+
 $('.login-btn').on('click', postLoginInfo)
 $('.reg-btn').on('click', postRegInfo)
+$('.logout').on('click', logout)
 $(document).keyup(function (e) {//捕获文档对象的按键弹起事件
     if (e.keyCode == 13) {//按键信息对象以参数的形式传递进来了
         //此处编写用户敲回车后的代码

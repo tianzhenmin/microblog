@@ -1,33 +1,51 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
+var fs = require('fs');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var redisStore = require('connect-redis')(session);
-var index = require('./routes/index');
-var users = require('./routes/users');
-var home = require('./routes/home');
-var login = require('./routes/login');
 var app = express();
-app.use(session({secret: 'keyboard cat', store: new redisStore()}));
-// app.use(function(req, res, next){
-//     console.log(req.session);
-//     app.locals.name = 'sss';
-//     next();
-// })
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.set('routes',__dirname + '/routes/');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cookieParser());
+app.use(session({ secret: 'zhenmin', cookie: { maxAge: 60000*30 },saveUninitialized:true,resave:true}));
+
+var index = require('./routes/index');
+var users = require('./routes/users');
+var home = require('./routes/home');
+var login = require('./routes/login');
+
+
+app.all("*",function(req,res,next){
+    res.locals.user=req.session.user;
+    console.log(res.locals.user);
+    next();
+})
+
+// var routes=app.get("routes");
+// fs.readdirSync(routes).forEach(function(fileName) {
+//     var filePath = routes + fileName;
+//     var rname=fileName.substr(0,fileName.lastIndexOf("."));
+//     if(!fs.lstatSync(filePath).isDirectory()) {
+//         if(rname==="index"){
+//             app.use("/",require(filePath));
+//         }else{
+//             app.use("/"+rname,require(filePath));
+//         }
+//     }
+// });
+
 
 app.use('/', index);
 app.use('/users', users);
@@ -36,6 +54,7 @@ app.get('/ajax', home);
 app.get('/add', home);
 app.get('/del/:id', home);
 app.get('/toUpdate/:id', home);
+app.get('/logout', login);
 app.post('/add', home);
 app.post('/update', home);
 app.post('/login', login);

@@ -34,8 +34,8 @@ if($('.mask')){
 }
 
 var postLoginInfo = function(){
-    var username = $('.pop-login #username').val();
-    var psd = $('.pop-login #password').val();
+    var username = $('.pop-login #log-username').val();
+    var psd = $('.pop-login #log-password').val();
     $.ajax({
         type:'post',
         url:"/login",

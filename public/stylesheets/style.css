@@ -3,6 +3,11 @@ body,h1,h2,h3,h4,h5,h6,p,ul{
   margin: 0;
 }
 
+.icon-dianying:before{
+  font-size: 30px;
+  vertical-align: middle;
+}
+
 a {
   color: #00B7FF;
 }
@@ -112,6 +117,16 @@ a {
   background: rgb(69, 97, 157);
 }
 
+.logobox{
+  float: left;
+}
+
+.logobox img{
+  margin-left:30px;
+  width: 72px;
+  border-radius: 50%;
+}
+
 .logo{
   width: 100px;
   height: 100px;
@@ -120,4 +135,8 @@ a {
   background-size: 100%;
   border-radius: 50%;
   margin-top: -40px;
+}
+
+footer{
+  background-color: #000;
 }

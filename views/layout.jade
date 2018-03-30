@@ -5,21 +5,32 @@ html
     title=title
     script(type='text/javascript', src='/javascripts/jquery-1.10.2.min.js')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/iconfont.css')
   body
     header.common-head
+      div.logobox
+        img(src="/images/lu.jpg")
       ul.header
         li
           a(href="/") 首页
         li
-          a(href="/home") 关于
+          a(href="/home")
+            i.iconfont.icon-dianying
+            span 关于
         -if(user)
           li.personal-page
-            a(href="/personal")=user
+            a(href="/personal")
+              i.iconfont.icon-yonghu-tianchong
+              span=user
           li.logout
-            a(href="javascript:void(0)") 注销
+            a(href="javascript:void(0)")
+              i.iconfont.icon-dianyuan
+              span 注销
         -else
           li.login.pop
-            a(href="javascript:void(0)") 登录
+            a(href="javascript:void(0)")
+              i.iconfont.icon-yonghu-tianchong
+              span 登录
           li.regist.pop
             a(href="javascript:void(0)") 注册
     <span class="blank"></span>
@@ -28,9 +39,9 @@ html
       div.logo
       div
         p
-          input(type="text" placeholder="用户名" name="username" id="username")
+          input(type="text" placeholder="用户名" name="username" id="log-username")
         p
-          input(type="password" placeholder="密码" name="password" id="password")
+          input(type="password" placeholder="密码" name="password" id="log-password")
         p
           input.login-btn.btn(type="button" value="登录")
         div

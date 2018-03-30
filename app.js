@@ -49,6 +49,7 @@ app.all("*",function(req,res,next){
 
 app.use('/', index);
 app.use('/users', users);
+app.post('/getPost', index);
 app.get('/home', home);
 app.get('/ajax', home);
 app.get('/add', home);

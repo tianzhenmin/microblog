@@ -2,83 +2,65 @@ extends layout
 
 block content
   section.container
-    div.article-list
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
-      div.article-item
-        h1 王磊说:
-        span 早起的鸟儿有虫吃
+    div.left-content
+      ul.divide
+        li.active(category="all")
+          i.iconfont.icon-quanbufenlei
+          span 全部分类
+        each val in listItem
+          li(category=val.category)
+              i.iconfont(class="#{val.icon}")
+              span=val.lan
+    div.center-content
+    div.right-content
+  script(src="/javascripts/index.js")
   style.
     .container{
-      background: url(/images/qn.jpg) center center no-repeat;
-      background-size: cover;
+      display:flex;
+    }
+    .left-content{
+      width: 18%;
+      position: fixed;
+    }
+    .left-content .list-title{
+
+    }
+    .left-content .divide{
+      height: calc(100% - 32px);
+      list-style: none;
+      margin: 30px 0 0 15px;
+      border: 1px solid #e7eaec;
+      background-color: #fff;
+    }
+    .left-content .divide li{
+      padding-right: 80px;
+      cursor: pointer;
+      padding-left: 20px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 16px;
+      border-bottom: 1px solid transparent;
+      border-top: 1px solid transparent;
+    }
+    .left-content .divide li:hover{
+      color: #f60;
+    }
+    .active{
+      background-color: #fff5ee;
+      border-bottom: 1px solid #f8d4bc!important;
+      border-top: 1px solid #f8d4bc!important;
+      color: #f60;
+    }
+    .left-content .divide li i{
+      margin-right: 10px;
+    }
+    .center-content{
+      flex: 0 0 60%;
+      margin-left: 20%
+    }
+    .right-content{
+      background-color: #00B7FF;
+      flex: 0 0 20%;
     }
     .article-list{
       display: flex;
@@ -97,5 +79,21 @@ block content
     }
     .article-item:hover{
       color: rgb(167,32,57);
+    }
+    .item{
+      padding: 30px 0 20px 20px;
+      color: #585f69;
+      margin-top: 10px;
+      border-bottom: 1px solid #585f69;
+    }
+    .item .title{
+      font-size: 20px;
+      line-height: 1.5;
+      font-size: 20px;
+      height: 30px;
+      margin: 10px 0;
+    }
+    .icon-biaoqian-:before{
+      margin-right: 10px;
     }
 

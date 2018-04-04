@@ -11,15 +11,17 @@ $('.left-content .divide li').on('click', function(){
             $('.center-content').empty();
             var tpl = ``;
             var result = data.result;
-            for (var j = 0, len1 = result.length; j < len1; j++){
-                for (var i = 0, len = result[j].articals.length; i < len; i++) {
-                    tpl += `<div class="item">
-                            <p class="title">${result[j].articals[i]}</p>
-                            <p class="tip"><i class="iconfont icon-biaoqian-"></i><span>${result[j].category}</span><p>
+            for (var i = 0, len = result.length; i < len; i++) {
+                tpl += `<div class="item">
+                            <a href="javascript:void(0)" class="appear-right"></a>
+                            <input class="article_id" type="hidden" value="${result[i].id}">
+                            <p class="title">${result[i].name}</p>
+                            <p class="tip"><i class="iconfont icon-biaoqian-"></i><span>${result[i].tip}</span><span class="auth">发布人: ${result[i].auth}</span><span format="date">发布时间: ${format_date(result[i].article_upDate)}</span><p>
+                            <p class="arti_desc">${result[i].article_desc}</p>
                           </div>`
-                }
             }
             $('.center-content').append(tpl);
+            appearRight();
         }
     })
 })
@@ -27,3 +29,31 @@ $('.left-content .divide li').on('click', function(){
 $(function(){
     $('.left-content .divide li:first-child').trigger('click');
 })
+
+var appearRight = function(){
+    $('.appear-right').on('click', function(){
+        var id = $(this).parent().find('.article_id').val();
+        $.ajax({
+            type: 'post',
+            url: '/right',
+            dataType: 'json',
+            data: {id: id},
+            success: function(data){
+                var rightTpl = `<h1>${data.name}</h1><p>${data.content}</p>`;
+                $('.right-content').append(rightTpl);
+            }
+        })
+        $('.right-mask').show();
+        $('.right-content').css('right','0');
+    });
+    $('.right-mask').on('click', function(){
+        $('.right-content').css('right','-60%');
+        $('.right-content').empty();
+        $('.right-mask').fadeOut();
+    })
+}
+
+function format_date(date) {
+    var date = new Date(date);
+    return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+}

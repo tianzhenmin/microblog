@@ -8,7 +8,6 @@ function fitScreen(){
 }
 
 fitScreen();
-var isLogin;
 $('.pop').on('click', function(){
     $('.mask').show();
 })

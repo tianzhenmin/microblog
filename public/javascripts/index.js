@@ -18,6 +18,7 @@ $('.left-content .divide li').on('click', function(){
                             <p class="title">${result[i].name}</p>
                             <p class="tip"><i class="iconfont icon-biaoqian-"></i><span>${result[i].tip}</span><span class="auth">发布人: ${result[i].auth}</span><span format="date">发布时间: ${format_date(result[i].article_upDate)}</span><p>
                             <p class="arti_desc">${result[i].article_desc}</p>
+                            <p class="delete">删除</p>
                           </div>`
             }
             $('.center-content').append(tpl);
@@ -51,7 +52,12 @@ var appearRight = function(){
         $('.right-content').empty();
         $('.right-mask').fadeOut();
     })
+    $('.delete').on('click', function(){
+        alert('i want delte')
+    })
 }
+
+
 
 function format_date(date) {
     var date = new Date(date);

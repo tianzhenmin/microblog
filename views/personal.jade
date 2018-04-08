@@ -4,6 +4,23 @@ block content
     section.content
         -if(user)
             h1 你好 #{user}
+            div.up-info
+                p
+                    input(name="arti-title", id="arti-title", placeholder="文章标题")
+                p
+                    select.tip-select
+                        option(value="")
+                        each val in listTip
+                            option(value="#{val.tip}")=val.tip
+                    或者
+                    input(name="arti-tip", id="arti-tip", placeholder="新增文章标签")
+                p
+                    input(name="arti-desc", id="arti-desc", placeholder="文章概要")
+                input(name="arti-content", id="arti-content", placeholder="文章正文")
+                input(name="arti-auth", id="arti-auth", type="hidden", value="#{user}")
+                p
+                    span.submit-info 提交
         -else
             p(style="text-align:center;") 未登录,
                 span.pop.login 点击登录
+    script(src="/javascripts/personal.js")

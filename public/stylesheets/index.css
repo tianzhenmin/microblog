@@ -16,7 +16,6 @@
     background-color: #fff;
 }
 .left-content .divide li{
-    padding-right: 80px;
     cursor: pointer;
     padding-left: 20px;
     height: 50px;
@@ -39,7 +38,7 @@
     margin-right: 10px;
 }
 .center-content{
-    flex: 0 0 60%;
+    flex: 0 0 50%;
     margin-left: 20%;
 }
 .right-content{
@@ -82,7 +81,6 @@
     padding: 30px 0 20px 20px;
     color: #585f69;
     margin-top: 10px;
-    border-bottom: 1px solid #585f69;
     box-shadow: 10px 10px 50px;
     position: relative;
 }
@@ -92,7 +90,7 @@
 .item>a{
     display: block;
     cursor: pointer;
-    height: 100%;
+    height: 75%;
     left: 0;
     position: absolute;
     right: 0;
@@ -134,4 +132,12 @@
 
 .personl-content .publish:hover{
     background: rgb(213,71,85);
+}
+
+.delete{
+    z-index: 50;
+}
+.delete:hover{
+    color: red;
+    cursor: pointer;
 }

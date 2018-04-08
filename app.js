@@ -25,6 +25,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var home = require('./routes/home');
 var login = require('./routes/login');
+var personal = require('./routes/personal');
 
 
 app.all("*",function(req,res,next){
@@ -49,6 +50,7 @@ app.all("*",function(req,res,next){
 
 app.use('/', index);
 app.use('/users', users);
+app.get('/personal', personal)
 app.post('/getPost', index);
 app.post('/right', index);
 app.get('/home', home);
@@ -61,6 +63,7 @@ app.post('/add', home);
 app.post('/update', home);
 app.post('/login', login);
 app.post('/regist', login);
+app.post('/upInfo', personal);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

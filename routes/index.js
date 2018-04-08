@@ -25,20 +25,17 @@ var selectDate = function () {
         else listTip = rows;
     })
 }
-selectDate();
 
+selectDate();
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  selectDate();
   res.render('index', {
       title: '首页',
       listTip: listTip
   });
   //console.log(req.session.user);
 });
-
-router.get('/personal', function(req, res, next){
-    res.render('personal', {title: '个人页面'});
-})
 
 router.post('/getPost', function(req, res, next){
     var category = req.body.category;

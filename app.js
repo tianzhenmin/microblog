@@ -53,6 +53,7 @@ app.use('/users', users);
 app.get('/personal', personal)
 app.post('/getPost', index);
 app.post('/right', index);
+app.post('/deleteOwnArticle', index);
 app.get('/home', home);
 app.get('/ajax', home);
 app.get('/add', home);

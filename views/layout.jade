@@ -17,6 +17,9 @@ html
           a(href="/home")
             i.iconfont.icon-iconset0103
             span 关于
+        li
+          a(href="/funny")
+            span 轻松一刻
         -if(user)
           li.personal-page
             a(href="/personal")
@@ -39,22 +42,28 @@ html
       div.logo
       div
         p
-          input(type="text" placeholder="用户名" name="username" id="log-username")
+          input(type="text" required='' name="username" id="log-username")
+          label(alt='请输入名称' placeholder='名称')
         p
-          input(type="password" placeholder="密码" name="password" id="log-password")
+          input(type="password" required='' name="password" autocomplete="off" id="log-password")
+          label(alt='请输入密码' placeholder='密码')
         p
           input.login-btn.btn(type="button" value="登录")
         div
           a.regist(href="javascript:void(0)") 没有账号？点击注册
     section.pop-reg.alertWin
       p
-        input(type="text" placeholder="用户名" name="username" id="username")
+        input(type="text" required='' name="username" id="username")
+        label(alt='请输入用户名' placeholder='用户名')
       p
-        input(type="text" placeholder="邮箱")
+        input(type="text" required='')
+        label(alt='请输入邮箱' placeholder='邮箱')
       p
-        input(type="password" placeholder="密码" name="password" id="password")
+        input(type="password" required='' name="password" autocomplete="off" id="password")
+        label(alt='请输入密码' placeholder='密码')
       p
-        input(type="password" placeholder="再次输入密码")
+        input(type="password" required='' autocomplete="off")
+        label(alt='请再次输入密码' placeholder='密码验证')
       p
         input.reg-btn.btn(type="button" value="注册")
       div

@@ -37,6 +37,10 @@ router.get('/', function(req, res, next) {
   //console.log(req.session.user);
 });
 
+router.get('/funny', function(req, res, next){
+    res.render('funny');
+})
+
 router.post('/getPost', function(req, res, next){
     var category = req.body.category;
     var result = [];
@@ -56,6 +60,15 @@ router.post('/right', function(req, res, next){
     db.query(`select * from articles where id=${id}`, function(err, rows){
         if(err) next(err);
         else res.send(rows[0]);
+    })
+})
+
+router.post('/deleteOwnArticle', function(req, res, next){
+    var del_id = parseInt(req.body.del_id);
+    console.log(del_id);
+    db.query(`delete from articles where id=${del_id}`, function(err, rows){
+        if(err) next(err);
+        else res.send({status: 200});
     })
 })
 

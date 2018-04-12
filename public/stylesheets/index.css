@@ -81,11 +81,11 @@
     padding: 30px 0 20px 20px;
     color: #585f69;
     margin-top: 10px;
-    box-shadow: 10px 10px 50px;
+    box-shadow: 0 0 10px;
     position: relative;
 }
 .item:hover{
-    box-shadow:  10px 10px 50px #00B7FF;
+    box-shadow:  0 0 10px #00B7FF;
 }
 .item>a{
     display: block;
@@ -140,4 +140,50 @@
 .delete:hover{
     color: red;
     cursor: pointer;
+}
+.review-edit {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: linear-gradient(to bottom,#fff,#dcdcdc,#000);
+    display: none;
+    z-index: 20;
+}
+
+.btn-box {
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+    text-align: center;
+}
+
+.btn-box>span {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 24px;
+}
+
+.btn-box>span:hover{
+    cursor: pointer;
+}
+
+span.sure {
+    background: coral;
+    margin-right: 20px;
+}
+
+span.no {
+    background: #dcdcdc;
+}
+.edit-tip{
+    padding: 30px;
+    text-align: center;
+    font-size: 28px;
 }

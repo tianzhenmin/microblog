@@ -12,14 +12,17 @@ $('.left-content .divide li').on('click', function(){
             var tpl = ``;
             var result = data.result;
             for (var i = 0, len = result.length; i < len; i++) {
+                var edit_area = '';
+                var auth = $('.personal-page>a>span').text();
+                if(auth && auth === result[i].auth){
+                    edit_area = `<p class="delete">删除</p>`;
+                }
                 tpl += `<div class="item">
                             <a href="javascript:void(0)" class="appear-right"></a>
                             <input class="article_id" type="hidden" value="${result[i].id}">
                             <p class="title">${result[i].name}</p>
                             <p class="tip"><i class="iconfont icon-biaoqian-"></i><span>${result[i].tip}</span><span class="auth">发布人: ${result[i].auth}</span><span format="date">发布时间: ${format_date(result[i].article_upDate)}</span><p>
-                            <p class="arti_desc">${result[i].article_desc}</p>
-                            <p class="delete">删除</p>
-                          </div>`
+                            <p class="arti_desc">${result[i].article_desc}</p>` + edit_area + `</div>`
             }
             $('.center-content').append(tpl);
             appearRight();
@@ -53,7 +56,36 @@ var appearRight = function(){
         $('.right-mask').fadeOut();
     })
     $('.delete').on('click', function(){
-        alert('i want delte')
+        let $this = $(this);
+        let article_id = $this.parent().find('.article_id').val();
+        $('.review-edit .edit-tip').text('确定删除' + $this.parent().find('.title').text() + '么?');
+        $('.review-edit').fadeIn();
+        // $this.parent().remove();
+        // $.ajax({
+        //     type: 'post',
+        //     url: '/deleteOwnArticle',
+        //     dataType: 'json',
+        //     data: {del_id: article_id},
+        //     success: function(data){
+        //         console.log(data.status);
+        //     }
+        // })
+        $('.sure').on('click', function(){
+            $.ajax({
+                type: 'post',
+                url: '/deleteOwnArticle',
+                dataType: 'json',
+                data: {del_id: article_id},
+                success: function(data){
+                    console.log(data.status);
+                }
+            })
+            $this.parent().remove();
+            $(this).parent().parent().fadeOut();
+        })
+        $('.no').on('click', function(){
+            $(this).parent().parent().fadeOut();
+        })
     })
 }
 

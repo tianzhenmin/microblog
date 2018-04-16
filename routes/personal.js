@@ -23,13 +23,14 @@ router.post('/upInfo', function(req, res, next){
         auth = req.body.auth,
         date = req.body.fullDate;
     var trueTip = tip;
+    console.log(content);
     if(newTip != ''){
         trueTip = newTip;
         db.query(`insert into article_tips (tip,name,icon) values ("${trueTip}","${trueTip}","icon-biaoqian-")`, function(err, rows){
             if(err) next(err);
         })
     }
-    db.query(`insert into articles (name,tip,article_desc,content,auth,article_upDate) values ("${title}","${trueTip}","${desc}","${content}","${auth}","${date}")`, function(err, rows){
+    db.query(`insert into articles (name,tip,article_desc,content,auth,article_upDate) values ('${title}','${trueTip}','${desc}','${content}','${auth}','${date}')`, function(err, rows){
         if(err) res.end('fail');
         else res.send({url: '/'});
     })

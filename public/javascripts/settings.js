@@ -103,6 +103,7 @@ function renderTable(){
     
     $('.num_page').click(function(){
         custom_page = $(this).text()-1;
+        $(this).addClass('num-bg');
         $(".table tr:gt(0)").remove();
         renderTable();
     });
@@ -119,7 +120,8 @@ function renderTable(){
 }
 function renderTableWithItem(data){
     if(data.length === 0){
-        $('.table').append(`<tr><td class="td" colspan="3">哎哟，没有客官要的东西呢!!</td></tr>`)
+        $('.table').append(`<tr><td class="td" colspan="3">哎哟，没有客官要的东西呢!!</td></tr>`);
+        $('.btn-box').empty();
     }else{
         page_num = Math.ceil(data.length / page_size);
         var div_page = '<a href="javascript:void(0)" class="pre_page" onClick="pre()">上一页</a>';
@@ -131,6 +133,7 @@ function renderTableWithItem(data){
         $('.btn-box').append(div_page);
         $('.num_page').click(function(){
             custom_page = $(this).text()-1;
+            $(this).addClass('num-bg');
             $(".table tr:gt(0)").remove();
             renderTableWithItem(data);
         });

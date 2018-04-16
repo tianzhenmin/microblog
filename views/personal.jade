@@ -19,6 +19,7 @@ block content
                     input(name="arti-desc", id="arti-desc", placeholder="文章概要")
                 input(name="arti-content", id="arti-content", placeholder="文章正文")
                 input(name="arti-auth", id="arti-auth", type="hidden", value="#{user}")
+                div#editor
                 p
                     span.submit-info 提交
             div.personal-info.personal
@@ -33,6 +34,7 @@ block content
         -else
             p(style="text-align:center;") 未登录,
                 span.pop.login 点击登录
+    script(src="/wangeditor/release/wangEditor.min.js")
     script(src="/javascripts/personal.js")
 
     style.
@@ -97,6 +99,18 @@ block content
             bottom: -50px;
             left: 0;
             transform: rotate(-45deg) translate(-100%, -100%);
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translateX(-10px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translateX(10px);
+            }
         }
         .triangle-right {
             position: absolute;

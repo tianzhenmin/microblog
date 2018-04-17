@@ -18,6 +18,26 @@ $('.submit-info').on('click', function(){
     })
 })
 
+$('.tip-select').on('mouseout', function(){
+    if($(this).val() !== ''){
+        $('#arti-tip').attr('disabled', 'true');
+        $('#arti-tip').addClass('disable');
+    } else {
+        $('#arti-tip').removeAttr('disabled');
+        $('#arti-tip').removeClass('disable');
+    }
+})
+
+$('#arti-tip').on('mouseout', function(){
+    if($(this).val() !== ''){
+        $('.tip-select').attr('disabled', 'true');
+        $('.tip-select').addClass('disable');
+    } else {
+        $('.tip-select').removeAttr('disabled');
+        $('.tip-select').removeClass('disable');
+    }
+})
+
 var weditor = window.wangEditor;
 var editor = new weditor('#editor');
 editor.create();

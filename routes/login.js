@@ -12,7 +12,7 @@ router.post('/login', function(req, res, next) {
             res.end('登陆出错');
         } else{
             if(rows.length>0){
-                req.session.user = username;
+                req.session.user = rows[0];
                 res.send({status: 200, url: '/personal'});
                 console.log(rows);
                 console.log(req.session);

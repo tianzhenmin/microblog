@@ -16,6 +16,8 @@
     background-color: #fff;
 }
 .left-content .divide li{
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: pointer;
     padding-left: 20px;
     height: 50px;
@@ -27,6 +29,9 @@
 }
 .left-content .divide li:hover{
     color: #f60;
+}
+.left-content .divide li span{
+    white-space: nowrap;
 }
 .active{
     background-color: #fff5ee;

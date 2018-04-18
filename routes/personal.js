@@ -1,6 +1,20 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
+var bodyParser = require('body-parser');
+const multer = require('multer');
 var db = require('./db');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.resolve('public/images'));
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({storage: storage});
 
 var listTip = [];
 var selectDate = function () {
@@ -35,5 +49,15 @@ router.post('/upInfo', function(req, res, next){
         else res.send({url: '/'});
     })
 })
+
+router.post('/upIcon', upload.single('avatar'), function(req, res, next) {
+    db.query(`update users set icon = "${path.basename(req.file.path)}" where id=${res.locals.user.id}`, function(err, rows){
+        if(err) throw(err);
+    });
+    res.send({
+        err: null,
+        filePath: path.basename(req.file.path)
+    });
+});
 
 module.exports = router;

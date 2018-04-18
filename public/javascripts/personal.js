@@ -38,6 +38,32 @@ $('#arti-tip').on('mouseout', function(){
     }
 })
 
+$(document).on({
+    change: function(){
+        let file = $(this).prop('files')[0];
+        let formData = new FormData();
+        formData.append("avatar", file);
+        var $this = $(this);
+        $.ajax({
+            type: 'POST',
+            url: '/upIcon',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                // alert(data.filePath);
+                $this.prev().attr('src', '/images/' + data.filePath);
+                console.log(data.filePath);
+            },
+            error: function (err) {
+                console.log(err.message);
+            }
+        })
+    }
+}, ".up-icon");
+
 var weditor = window.wangEditor;
 var editor = new weditor('#editor');
 editor.create();

@@ -60,16 +60,7 @@ var appearRight = function(){
         let article_id = $this.parent().find('.article_id').val();
         $('.review-edit .edit-tip').text('确定删除' + $this.parent().find('.title').text() + '么?');
         $('.review-edit').fadeIn();
-        // $this.parent().remove();
-        // $.ajax({
-        //     type: 'post',
-        //     url: '/deleteOwnArticle',
-        //     dataType: 'json',
-        //     data: {del_id: article_id},
-        //     success: function(data){
-        //         console.log(data.status);
-        //     }
-        // })
+        $('.mask').show();
         $('.sure').on('click', function(){
             $.ajax({
                 type: 'post',
@@ -84,6 +75,7 @@ var appearRight = function(){
             $(this).parent().parent().fadeOut();
         })
         $('.no').on('click', function(){
+            $('.mask').hide();
             $(this).parent().parent().fadeOut();
         })
     })

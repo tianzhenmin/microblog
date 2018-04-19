@@ -34,38 +34,13 @@ app.all("*",function(req,res,next){
     next();
 })
 
-// var routes=app.get("routes");
-// fs.readdirSync(routes).forEach(function(fileName) {
-//     var filePath = routes + fileName;
-//     var rname=fileName.substr(0,fileName.lastIndexOf("."));
-//     if(!fs.lstatSync(filePath).isDirectory()) {
-//         if(rname==="index"){
-//             app.use("/",require(filePath));
-//         }else{
-//             app.use("/"+rname,require(filePath));
-//         }
-//     }
-// });
-
-
+//路由控制
+app.use('/', index);
+app.use('/', home);
+app.use('/', login);
 app.use('/', index);
 app.use('/users', users);
-app.get('/personal', personal)
-app.post('/getPost', index);
-app.post('/right', index);
-app.post('/deleteOwnArticle', index);
-app.get('/home', home);
-app.get('/ajax', home);
-app.get('/add', home);
-app.get('/del/:id', home);
-app.get('/toUpdate/:id', home);
-app.get('/logout', login);
-app.post('/add', home);
-app.post('/update', home);
-app.post('/login', login);
-app.post('/regist', login);
-app.post('/upInfo', personal);
-app.post('/upIcon', personal);
+app.use('/admin', personal);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

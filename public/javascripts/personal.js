@@ -1,7 +1,8 @@
 $('.submit-info').on('click', function(){
     var title = $('#arti-title').val();
     var desc = $('#arti-desc').val();
-    var content = $('.w-e-text').html();
+    var content = $('.w-e-text').html().replace(/\'/g, "\\'").replace(/"/g, '\"');
+    console.log(content)
     var auth = $('#arti-auth').val();
     var tip = $('.tip-select').val();
     var newTip = $('#arti-tip').val();
@@ -9,7 +10,7 @@ $('.submit-info').on('click', function(){
     var fullDate = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
     $.ajax({
         type: 'post',
-        url: '/upInfo',
+        url: '/admin/upInfo',
         dataType: 'json',
         data: {title: title,desc: desc, content: content, auth: auth, tip: tip, fullDate: fullDate,newTip: newTip},
         success: function (data) {
@@ -37,32 +38,6 @@ $('#arti-tip').on('mouseout', function(){
         $('.tip-select').removeClass('disable');
     }
 })
-
-$(document).on({
-    change: function(){
-        let file = $(this).prop('files')[0];
-        let formData = new FormData();
-        formData.append("avatar", file);
-        var $this = $(this);
-        $.ajax({
-            type: 'POST',
-            url: '/upIcon',
-            data: formData,
-            async: false,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                // alert(data.filePath);
-                $this.prev().attr('src', '/images/' + data.filePath);
-                console.log(data.filePath);
-            },
-            error: function (err) {
-                console.log(err.message);
-            }
-        })
-    }
-}, ".up-icon");
 
 var weditor = window.wangEditor;
 var editor = new weditor('#editor');

@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+    link(rel="stylesheet", href="/stylesheets/personal.css")
+    section.content
+        include admin-left
+        section.show-pannel
+            -if(user)
+                p.page-title 录入文章
+                div.up-info
+                    div
+                        label.label 文章标题
+                        input(name="arti-title", id="arti-title", placeholder="文章标题")
+                    div
+                        label.label 选择标签 / 新增标签
+                        div.tip-container
+                            select.tip-select
+                                option(value="") 未选择分类
+                                each val in listTip
+                                    option(value="#{val.tip}")=val.tip
+                            input(name="arti-tip", id="arti-tip", placeholder="新增文章标签")
+                    div
+                        label.label 文章摘要
+                        textarea(name="arti-desc", id="arti-desc", placeholder="文章概要")
+                        //input(name="arti-desc", id="arti-desc", placeholder="文章概要")
+                    input(name="arti-auth", id="arti-auth", type="hidden", value="#{user.username}")
+                    div
+                        label.label 正文部分
+                        section#editor
+                    p
+                        span.submit-info 提交
+            -else
+                img(src="/images/logerr1.jpg", style="height: 100%;display: block;margin:auto")
+                p.jiant
+                    img(src="/images/point.png", style="height: 50px;")
+    //-else
+    //    p(style="text-align:center;") 未登录,
+    //        span.pop.login 点击登录
+    script(src="/wangeditor/release/wangEditor.min.js")
+    script(src="/javascripts/personal.js")

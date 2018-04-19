@@ -52,8 +52,9 @@
     background-color: #fff;
     width: 60%;
     right: -60%;
-    height: 100%;
+    height: calc(100% - 92px);
     z-index: 11;
+    overflow-y: scroll;
 }
 .right-mask{
     position: fixed;
@@ -88,6 +89,7 @@
     margin-top: 10px;
     box-shadow: 0 0 10px;
     position: relative;
+    transition: all .5s ease;
 }
 .item:hover{
     box-shadow:  0 0 10px #00B7FF;

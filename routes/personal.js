@@ -24,8 +24,12 @@ var selectDate = function () {
     })
 }
 selectDate();
+router.get('/addArticle', function(req, res, next){
+    res.render('admin/addArticle', {title: '个人页面', listTip: listTip});
+})
+
 router.get('/personal', function(req, res, next){
-    res.render('personal', {title: '个人页面', listTip: listTip});
+    res.render('admin/admin', {title: '个人页面'});
 })
 
 router.post('/upInfo', function(req, res, next){
@@ -51,6 +55,7 @@ router.post('/upInfo', function(req, res, next){
 })
 
 router.post('/upIcon', upload.single('avatar'), function(req, res, next) {
+    res.locals.user.icon = path.basename(req.file.path);
     db.query(`update users set icon = "${path.basename(req.file.path)}" where id=${res.locals.user.id}`, function(err, rows){
         if(err) throw(err);
     });

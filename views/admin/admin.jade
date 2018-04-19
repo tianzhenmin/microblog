@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+    section.content
+        include admin-left
+        section.show-pannel
+            -if(user)
+                div.user-info
+                    img(src="/images/#{user.icon}")
+                    p.user-name=user.username
+                    p.user-desc 全面、稳妥又要有很强的机动性、灵活性。在材料选择上以事实材料为主，重点介绍自己的专业水平、能力及综合素质，略谈自己对学习、工作、生活等的观点、看法。语言要求准确、平实、简洁。布局由重点到从属，详略得当地加以安排。具体包括首部、正文、尾部三部分
+            -else
+                img(src="/images/logerr1.jpg", style="height: 100%;display: block;margin:auto")
+                p.jiant
+                    img(src="/images/point.png", style="height: 50px;")
+
+    style.
+        .user-info{
+            text-align: center;
+            padding-top: 20px;
+        }
+        .user-info img{
+            width: 200px;
+            border-radius: 50%;
+        }
+        .user-name{
+            line-height: 80px;
+            font-size: 50px;
+        }
+        .user-desc{
+            text-indent: 40px;
+            padding: 20px 0;
+            width: 500px;
+            margin: auto;
+        }

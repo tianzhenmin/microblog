@@ -1,0 +1,24 @@
+link(rel="stylesheet", href="/stylesheets/admin/admin-left.css")
+section.personal-control
+    -if(user)
+        div.user-content
+            div.icon-con
+                img.user-icon(src="/images/#{user.icon}")
+                input.up-icon(type="file")
+            p
+                span.user-nick=user.username
+        div.article-manage
+            ul.manage-list
+                li.blog-manage
+                    a(href="#") 博客管理
+                    ul.sublist
+                        li 文章管理
+                        li 标签管理
+                        li
+                            a(href="/admin/addArticle") 新增文章
+                li.blog-manage
+                    a(href="#") 好友管理
+    -else
+
+
+script(src="/javascripts/admin/admin-left.js")

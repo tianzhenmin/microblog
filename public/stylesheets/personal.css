@@ -1,0 +1,72 @@
+.disable{
+    background: #dcdcdc;
+    border: none;
+    height: 32px!important;
+}
+.disable:hover{
+    cursor: not-allowed;
+}
+.up-info{
+    padding: 0 5%;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dcdcdc;
+}
+.up-info>div {
+    display: flex;
+    flex-wrap: wrap;
+}
+.up-info>div input,
+.up-info>div select,
+.up-info>div textarea{
+    margin: 10px 0;
+    width: calc(100% - 170px);
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+.up-info .tip-container {
+    width: calc(100% - 150px);
+}
+.up-info .tip-container select{
+    width: 150px;
+}
+.up-info .tip-container input{
+    width: calc(100% - 190px);
+}
+#arti-tip{
+    margin-left: 20px;
+}
+.submit-info{
+    float: right;
+    margin: 30px 150px 30px 0;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    background: #00B7FF;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 20px;
+}
+.label{
+    padding-top: 18px;
+    width: 170px;
+}
+.w-e-text-container{
+    z-index: 0!important;
+}
+.page-title{
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    font-size: 24px;
+    color: #888;
+    box-shadow: 1px 0 10px;
+    background: #fff;
+}
+#editor{
+    margin: 10px 0;
+    width: calc(100% - 150px);
+}

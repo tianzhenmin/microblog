@@ -1,0 +1,99 @@
+.content{
+    display: flex;
+}
+.personal-control{
+    flex: 0 0 20%;
+    background: rgb(47, 64, 80);
+}
+.show-pannel{
+    position: relative;
+    flex: 0 0 80%;
+    height: 850px;
+    overflow-y: scroll;
+    background: #efefef;
+}
+.user-content{
+    margin-top: 20px;
+    text-align: center;
+}
+.user-icon{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.user-nick{
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    font-family: "STCaiyun";
+    padding-top: 20px;
+}
+.icon-con{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+.up-icon{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+.article-manage{
+    padding-top: 50px;
+}
+
+.blog-manage{
+    line-height: 40px;
+    text-align: center;
+}
+.blog-manage>a{
+    font-size: 24px;
+    color: #dcdcdc;
+    position: relative;
+    display: inherit;
+    width: 100%;
+    text-decoration: none;
+}
+.blog-manage>a:after{
+    content: '';
+    height: 1px;
+    width: 100%;
+    background: #dcdcdc;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+.blog-manage{
+    cursor: pointer;
+}
+.blog-manage .sublist {
+    display: none;
+}
+
+.active{
+    border-left: 5px solid rgb(26, 179, 184);
+}
+
+@keyframes spin {
+    0%{
+        transform: translateY(50px);
+    }
+    50%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(50px);
+    }
+}
+
+.jiant{
+    top: 0;
+    right: 92px;
+    position: absolute;
+    animation: spin 1s cubic-bezier(.41,.01,.6,1) infinite;
+}

@@ -13,7 +13,7 @@ router.post('/login', function(req, res, next) {
         } else{
             if(rows.length>0){
                 req.session.user = rows[0];
-                res.send({status: 200, url: '/personal'});
+                res.send({status: 200, url: '/admin/personal'});
                 console.log(rows);
                 console.log(req.session);
             } else{

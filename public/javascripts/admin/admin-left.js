@@ -1,3 +1,10 @@
+
+$(function(){
+    $('.blog-manage a[href="' + window.location.pathname + '"]').parents('.blog-manage').addClass('active');
+    $('.blog-manage a[href="' + window.location.pathname + '"]').parent('.sublist li').addClass('sub-active').parents('.sublist').slideDown();
+})
+
+
 $('.blog-manage').on('click', function(){
     $(this).siblings().find('.sublist').slideUp();
     $(this).addClass('active');

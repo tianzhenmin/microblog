@@ -32,6 +32,21 @@ router.get('/personal', function(req, res, next){
     res.render('admin/admin', {title: '个人页面'});
 })
 
+router.get('/articleManage', function(req, res, next){
+    db.query(`select * from articles where auth = "${res.locals.user.username}"`, function(err, rows){
+        if(err) {
+            next(err);
+        } else {
+            console.log(rows[0]);
+            res.render('admin/articleManage', {title: '文章管理', artList: rows});
+        }
+    })
+})
+
+router.get('/catagoryManage', function(req, res, next){
+    res.render('admin/catagoryManage', {title: '标签管理'});
+})
+
 router.post('/upInfo', function(req, res, next){
     var title = req.body.title,
         desc = req.body.desc,
@@ -64,5 +79,10 @@ router.post('/upIcon', upload.single('avatar'), function(req, res, next) {
         filePath: path.basename(req.file.path)
     });
 });
+
+router.post('/delete', function(req, res, next){
+    var id = req.body.arti_id;
+    res.send({status: id + '已经被删除'});
+})
 
 module.exports = router;

@@ -25,7 +25,7 @@ var selectDate = function () {
 }
 selectDate();
 router.get('/addArticle', function(req, res, next){
-    res.render('admin/addArticle', {title: '个人页面', listTip: listTip});
+    res.render('admin/addArticle', {title: '新的文章', listTip: listTip});
 })
 
 router.get('/personal', function(req, res, next){

@@ -70,3 +70,7 @@
     margin: 10px 0;
     width: calc(100% - 150px);
 }
+
+.submit-info:hover{
+    cursor: pointer;
+}

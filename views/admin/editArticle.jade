@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+    link(rel="stylesheet", href="/stylesheets/personal.css")
+    section.content
+        include admin-left
+        section.show-pannel
+            -if(user)
+                p.page-title 更新文章
+                div.up-info
+                    input.arti_id(value="#{datas.id}", type="hidden")
+                    div
+                        label.label 文章标题
+                        input(name="arti-title", id="arti-title", placeholder="文章标题", value="#{datas.name}")
+                    div
+                        label.label 选择标签 / 新增标签
+                        div.tip-container
+                            select.tip-select
+                                option(value="") 未选择分类
+                                each val in listTip
+                                    option(value="#{val.tip}" pre-value="#{datas.tip}")=val.tip
+                            input(name="arti-tip", id="arti-tip", placeholder="新增文章标签", disabled)
+                    div
+                        label.label 文章摘要
+                        textarea(name="arti-desc", id="arti-desc", placeholder="文章概要")=datas.article_desc
+                    div
+                        div.pre-content(style="display:none", value="#{datas.content}")
+                        label.label 正文部分
+                        section#editor
+                    p
+                        span.submit-info 保存修改
+            -else
+                include noLogin
+        script(src="/wangeditor/release/wangEditor.min.js")
+        script(src="/javascripts/admin/editArticle.js")

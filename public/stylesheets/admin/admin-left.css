@@ -2,7 +2,7 @@
     display: flex;
 }
 .personal-control{
-    flex: 0 0 20%;
+    flex: 0 0 15%;
     background: rgb(47, 64, 80);
 }
 .sublist{
@@ -10,7 +10,7 @@
 }
 .show-pannel{
     position: relative;
-    flex: 0 0 80%;
+    flex: 0 0 85%;
     height: calc(100vh - 90px);
     overflow-y: scroll;
     background: #efefef;

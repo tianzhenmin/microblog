@@ -33,14 +33,18 @@ router.get('/personal', function(req, res, next){
 })
 
 router.get('/articleManage', function(req, res, next){
-    db.query(`select * from articles where auth = "${res.locals.user.username}"`, function(err, rows){
-        if(err) {
-            next(err);
-        } else {
-            console.log(rows[0]);
-            res.render('admin/articleManage', {title: '文章管理', artList: rows});
-        }
-    })
+    if(res.locals.user){
+        db.query(`select * from articles where auth = "${res.locals.user.username}"`, function(err, rows){
+            if(err) {
+                next(err);
+            } else {
+                console.log(rows[0]);
+                res.render('admin/articleManage', {title: '文章管理', artList: rows});
+            }
+        })
+    } else {
+        res.render('admin/articleManage', {title: '未登录文章管理'});
+    }
 })
 
 router.get('/catagoryManage', function(req, res, next){
@@ -81,8 +85,41 @@ router.post('/upIcon', upload.single('avatar'), function(req, res, next) {
 });
 
 router.post('/delete', function(req, res, next){
-    var id = req.body.arti_id;
-    res.send({status: id + '已经被删除'});
+    var id = req.body.id;
+    db.query(`delete from articles where id=${id}`, function(err, rows){
+        if(err){
+            next(err);
+        } else {
+            res.send({url: '/admin/articleManage'});
+        }
+    })
+})
+
+router.get('/editArticle/:id', function(req, res, next){
+    var id = req.params.id;
+    db.query("select * from articles where id=" + id, function (err, rows) {
+        if (err) {
+            res.end('修改页面跳转失败：' + err);
+        } else {
+            res.render("admin/editArticle", {datas: rows[0], listTip: listTip});       //直接跳转
+        }
+    });
+})
+
+router.post('/updateArticle', function(req, res, next){
+    var id = req.body.id,
+        title = req.body.title,
+        desc = req.body.desc,
+        content = req.body.content,
+        tip = req.body.tip,
+        fullDate = req.body.date;
+    db.query(`update articles set name="${title}",tip="${tip}",article_desc="${desc}",content="${content}",article_upDate="${fullDate}" where id=${id}`, function(err, rows){
+        if(err){
+            next(err);
+        } else {
+            res.send({url: '/admin/articleManage'});
+        }
+    })
 })
 
 module.exports = router;

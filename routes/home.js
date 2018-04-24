@@ -74,16 +74,5 @@ router.post('/update', function (req, res) {
         }
     });
 });
-//关闭连接
-
-// router.get('/', function (req, res, next) {
-//     db.query('select * from websites', function (err, rows) {
-//         if (err) {
-//             res.render('/home', {title: 'Express', datas: []});  // this renders "views/users.html"
-//         } else {
-//             res.render('/home', {title: 'Express', datas: rows});
-//         }
-//     })
-// });
 
 module.exports = router;

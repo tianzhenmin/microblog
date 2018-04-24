@@ -19,7 +19,7 @@ $('.submit-info').on('click', function(){
     })
 })
 
-$('.tip-select').on('mouseout', function(){
+$('.tip-select').on('change', function(){
     if($(this).val() !== ''){
         $('#arti-tip').attr('disabled', 'true');
         $('#arti-tip').addClass('disable');
@@ -29,7 +29,7 @@ $('.tip-select').on('mouseout', function(){
     }
 })
 
-$('#arti-tip').on('mouseout', function(){
+$('#arti-tip').on('keyup', function(){
     if($(this).val() !== ''){
         $('.tip-select').attr('disabled', 'true');
         $('.tip-select').addClass('disable');

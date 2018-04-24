@@ -1,0 +1,136 @@
+.del-pannel,
+.change-pannel {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    background: rgba(0, 0, 0, .6);
+    display: none;
+}
+.del-content{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: linear-gradient(to bottom, #fff, #00B7FF, #dcdcdc, #000);
+}
+.del-content .del-info{
+    height: 100px;
+    line-height: 100px;
+    width: calc(100% - 40px);
+    margin-top: 30px;
+    padding: 0 20px;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+}
+.del-btn-box {
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+    text-align: center;
+}
+.del-btn-box .btn {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 24px;
+}
+.del-btn-box .btn:hover {
+    cursor: pointer;
+}
+
+.del-btn-box .del-btn {
+    background: coral;
+    margin-right: 20px;
+    box-shadow: 1px 1px 10px;
+}
+
+.del-btn-box .del-btn:hover{
+    box-shadow: 1px 1px 10px red;
+}
+
+.del-btn-box .no-btn {
+    background: #dcdcdc;
+    box-shadow: 1px 1px 10px #000;
+}
+.del-btn-box .no-btn:hover{
+    box-shadow: 1px 1px 10px #fff;
+}
+.page-title {
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    font-size: 24px;
+    color: #888;
+    box-shadow: 1px 0 10px;
+    background: #fff;
+}
+.article-oper{
+    width: calc(100% - 100px);
+    margin: auto;
+    margin-top: 60px;
+    background: #fff;
+}
+.artlist-head{
+    background-color: #f8d4bc;
+}
+.arti{
+    display: flex;
+}
+.arti div{
+    width: 10%;
+    text-align: center;
+    border-right: 1px solid #dcdcdc;
+}
+
+.arti .arti-title {
+    width: 40%;
+}
+.arti div p{
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #585f69;
+}
+.tabed{
+    background-color: cornflowerblue;
+}
+.tabed div p{
+    color: #fff;
+}
+input[type="checkbox"]{
+    width: 100%;
+    height: 50%;
+    margin-top: 10px;
+}
+.arti .arti-pub{
+    width: 20%;
+}
+.arti .arti-control{
+    display: flex;
+    justify-content: center;
+    border-color: transparent!important;
+}
+.arti-control p{
+    flex: 0 0 40%;
+    text-align: center;
+}
+.arti-control i:hover{
+    cursor: pointer;
+}
+.cal b{
+    background: #888;
+    color: #fff;
+    border-radius: 50%;
+}

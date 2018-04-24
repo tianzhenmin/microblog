@@ -4,3 +4,7 @@ block content
     section.content
         include ./admin-left
         section.show-pannel
+            -if(user)
+                p
+            -else
+                include noLogin

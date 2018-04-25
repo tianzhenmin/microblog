@@ -20,7 +20,8 @@ $('.left-content .divide li').on('click', function(){
                 tpl += `<div class="item">
                             <a href="javascript:void(0)" class="appear-right"></a>
                             <input class="article_id" type="hidden" value="${result[i].id}">
-                            <p class="title">${result[i].name}</p>
+                            <input value="${result[i].article_link_str}" type="hidden">
+                            <p class="title"><a href="/blog-detail/${result[i].id + '_' + result[i].article_link_str}">${result[i].name}</a></p>
                             <p class="tip"><i class="iconfont icon-biaoqian-"></i><span>${result[i].tip}</span><span class="auth">发布人: ${result[i].auth}</span><span format="date">发布时间: ${format_date(result[i].article_upDate)}</span><p>
                             <p class="arti_desc">${result[i].article_desc}</p>` + edit_area + `</div>`
             }

@@ -2,7 +2,6 @@ $('.submit-info').on('click', function(){
     var title = $('#arti-title').val();
     var desc = $('#arti-desc').val();
     var content = $('.w-e-text').html().replace(/\'/g, "\\'").replace(/"/g, '\"');
-    console.log(content)
     var auth = $('#arti-auth').val();
     var tip = $('.tip-select').val();
     var newTip = $('#arti-tip').val();

@@ -23,6 +23,18 @@ var selectDate = function () {
         else listTip = rows;
     })
 }
+
+var randomString = function(len) {
+    len = len || 35;
+    var $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var maxPos = $chars.length;
+    var pwd = '';
+    for (i = 0; i < len; i++) {
+        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return pwd;
+}
+
 selectDate();
 router.get('/addArticle', function(req, res, next){
     res.render('admin/addArticle', {title: '新的文章', listTip: listTip});
@@ -60,14 +72,15 @@ router.post('/upInfo', function(req, res, next){
         auth = req.body.auth,
         date = req.body.fullDate;
     var trueTip = tip;
-    console.log(content);
+    var str = randomString(35);
+    console.log(str);
     if(newTip != ''){
         trueTip = newTip;
         db.query(`insert into article_tips (tip,name,icon) values ("${trueTip}","${trueTip}","icon-biaoqian-")`, function(err, rows){
             if(err) next(err);
         })
     }
-    db.query(`insert into articles (name,tip,article_desc,content,auth,article_upDate) values ('${title}','${trueTip}','${desc}','${content}','${auth}','${date}')`, function(err, rows){
+    db.query(`insert into articles (name,tip,article_desc,content,auth,article_upDate,article_link_str) values ('${title}','${trueTip}','${desc}','${content}','${auth}','${date}','${str}')`, function(err, rows){
         if(err) res.end('fail');
         else res.send({url: '/'});
     })

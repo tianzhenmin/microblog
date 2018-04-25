@@ -32,7 +32,8 @@ block content
                             div.arti-cata
                                 p=val.tip
                             div.arti-title
-                                p=val.name
+                                p
+                                    a(href="/blog-detail/#{val.id}_#{val.article_link_str}")=val.name
                             div.arti-auth
                                 p=val.auth
                             div.arti-pub(format-data)

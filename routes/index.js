@@ -72,4 +72,16 @@ router.post('/deleteOwnArticle', function(req, res, next){
     })
 })
 
+router.get('/blog-detail/:id', function(req, res, next){
+    var id_str = req.params.id;
+    var id = parseInt(id_str.substring(0, id_str.indexOf('_')));
+    db.query(`select * from articles where id=${id}`, function(err, rows){
+        if(err){
+            next(err);
+        } else {
+            res.render('blog-detail', {title: `blog - ${rows[0].name}`, data:rows[0]})
+        }
+    })
+})
+
 module.exports = router;

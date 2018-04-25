@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    div.dd=data.content
+
+    script.
+        $('.dd').css('min-height',$(window).height() - $('header').height() - 21);

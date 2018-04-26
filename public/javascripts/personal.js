@@ -1,7 +1,9 @@
+var ue = UE.getEditor('editor');
+
 $('.submit-info').on('click', function(){
     var title = $('#arti-title').val();
     var desc = $('#arti-desc').val();
-    var content = $('.w-e-text').html().replace(/\'/g, "\\'").replace(/"/g, '\"');
+    var content = ue.getContent().replace(/\'/g, "\\'").replace(/"/g, '\"');
     var auth = $('#arti-auth').val();
     var tip = $('.tip-select').val();
     var newTip = $('#arti-tip').val();
@@ -38,6 +40,6 @@ $('#arti-tip').on('keyup', function(){
     }
 })
 
-var weditor = window.wangEditor;
-var editor = new weditor('#editor');
-editor.create();
+// var weditor = window.wangEditor;
+// var editor = new weditor('#editor');
+// editor.create();

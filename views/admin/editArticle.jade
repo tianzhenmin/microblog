@@ -26,10 +26,14 @@ block content
                     div
                         div.pre-content(style="display:none", value="#{datas.content}")
                         label.label 正文部分
-                        section#editor
+                        //section#editor
+                        script#editor
                     p
                         span.submit-info 保存修改
             -else
                 include noLogin
+        script(type="text/javascript", charset="utf-8", src="/ueditor/ueditor.config.js")
+        script(type="text/javascript", charset="utf-8", src="/ueditor/ueditor.all.min.js")
+        script(type="text/javascript", charset="utf-8", src="/ueditor/lang/zh-cn/zh-cn.js")
         script(src="/wangeditor/release/wangEditor.min.js")
         script(src="/javascripts/admin/editArticle.js")

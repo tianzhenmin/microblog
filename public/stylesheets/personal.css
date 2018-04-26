@@ -73,6 +73,12 @@
 #editor{
     margin: 10px 0;
     width: calc(100% - 150px);
+    min-height: 300px;
+}
+
+#edui1,#edui1_iframeholder{
+    width: 100%!important;
+    z-index: 0!important;
 }
 
 .submit-info:hover{

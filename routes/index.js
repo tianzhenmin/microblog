@@ -79,7 +79,19 @@ router.get('/blog-detail/:id', function(req, res, next){
         if(err){
             next(err);
         } else {
+            console.log(rows[0].content);
             res.render('blog-detail', {title: `blog - ${rows[0].name}`, data:rows[0]})
+        }
+    })
+})
+
+router.post('/showauth', function(req, res, next) {
+    var auth = req.body.auth;
+    db.query(`select * from users where username="${auth}"`, function(err, rows){
+        if(err){
+            next(err);
+        } else {
+            res.send({result: rows[0]});
         }
     })
 })

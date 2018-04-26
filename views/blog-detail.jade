@@ -1,7 +1,87 @@
 extends layout
 
 block content
-    div.dd=data.content
+    section.container
+        section.content
+            div.title-container
+                p
+                    i.iconfont.icon-time
+                    span.timeline(format-data)=data.article_upDate
+                p.title=data.name
+                p
+                    i.iconfont.icon-23
+                    span.arti-auth=data.auth
+            div.arti-desc=data.article_desc
 
-    script.
-        $('.dd').css('min-height',$(window).height() - $('header').height() - 21);
+            div.arti-container(value="#{data.content}")
+
+        div.auth-desc
+            i.iconfont.icon-chacha(title="关闭")
+            div.user-info
+
+
+
+    script(src="/javascripts/blog-detail.js")
+    style.
+        @keyframes tan {
+            from{
+                width: 0;
+                height: 0;
+            }
+            to{
+                width: 300px;
+                height: 500px;
+            }
+        }
+        .container{
+            background: #f3f3f4;
+        }
+        .content{
+            width: 80%;
+            margin: auto;
+            padding: 50px 20px;
+        }
+        .title-container{
+            text-align: center;
+            padding-bottom: 50px;
+        }
+        .title{
+            margin: 20px 0;
+            font-size: 30px;
+        }
+        .arti-desc{
+            font-size: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 2px solid rgb(0,154,97);
+        }
+        .icon-time:before,.icon-23:before{
+            color: #999;
+            margin-right: 5px;
+        }
+        .arti-container p{
+            text-indent: 20px;
+        }
+        .arti-auth:hover{
+            cursor: pointer;
+            color: #19aa8d;
+        }
+        .auth-desc{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 500px;
+            transform: translate(-50%, -50%);
+            background: #f8d4bc;
+            display: none;
+            animation: tan .5s cubic-bezier(.31,.83,.71,1);
+        }
+        .icon-chacha{
+            position: absolute;
+            right: -15px;
+            top: -15px;
+        }
+        .user-info{
+            text-align: center;
+        }

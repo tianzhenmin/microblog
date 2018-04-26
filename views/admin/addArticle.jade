@@ -26,7 +26,8 @@ block content
                     input(name="arti-auth", id="arti-auth", type="hidden", value="#{user.username}")
                     div
                         label.label 正文部分
-                        section#editor
+                        //section#editor
+                        script#editor
                     p
                         span.submit-info 提交
             -else
@@ -34,5 +35,8 @@ block content
     //-else
     //    p(style="text-align:center;") 未登录,
     //        span.pop.login 点击登录
+    script(type="text/javascript", charset="utf-8", src="/ueditor/ueditor.config.js")
+    script(type="text/javascript", charset="utf-8", src="/ueditor/ueditor.all.min.js")
+    script(type="text/javascript", charset="utf-8", src="/ueditor/lang/zh-cn/zh-cn.js")
     script(src="/wangeditor/release/wangEditor.min.js")
     script(src="/javascripts/personal.js")

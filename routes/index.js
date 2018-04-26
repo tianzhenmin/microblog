@@ -91,7 +91,11 @@ router.post('/showauth', function(req, res, next) {
         if(err){
             next(err);
         } else {
-            res.send({result: rows[0]});
+            if(rows.length == 0){
+                res.send({status: 400})
+            } else {
+                res.send({status: 200, result: rows[0]});
+            }
         }
     })
 })

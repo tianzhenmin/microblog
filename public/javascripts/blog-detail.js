@@ -21,7 +21,15 @@ $('.arti-auth').on('click', function(){
         data: {auth: auth},
         success: function(data){
             $('.auth-desc .user-info').empty();
-            $('.auth-desc .user-info').append(`<img style="width: 50%;" src="/images/${data.result.icon}"/>`);
+            if(data.status == 200){
+                $('.auth-desc .user-info').append(`<p><img style="width: 50%;" src="/images/${data.result.icon}"/></p>
+                                                    <p style="padding-top:10px">${data.result.username}</p>
+                                                `);
+            } else {
+                $('.auth-desc .user-info').append(`<p><img style="width: 50%;" src="/images/male.png"/></p>
+                                                    <p style="padding-top:10px">未注册用户(游客发布)</p>
+                                                `);
+            }
             $('.auth-desc').show();
         }
     })

@@ -126,7 +126,7 @@ router.post('/updateArticle', function(req, res, next){
         content = req.body.content,
         tip = req.body.tip,
         fullDate = req.body.date;
-    db.query(`update articles set name="${title}",tip="${tip}",article_desc="${desc}",content="${content}",article_upDate="${fullDate}" where id=${id}`, function(err, rows){
+    db.query(`update articles set name='${title}',tip='${tip}',article_desc='${desc}',content='${content}',article_upDate='${fullDate}' where id=${id}`, function(err, rows){
         if(err){
             next(err);
         } else {

@@ -12,6 +12,9 @@ block content
                     i.iconfont.icon-23
                     span.arti-auth=data.auth
             div.arti-desc=data.article_desc
+            div.arti-font
+                p.font-op.font-big A+
+                p.font-op.font-small A-
 
             div.arti-container(value="#{data.content}")
 
@@ -34,26 +37,56 @@ block content
             }
         }
         .container{
-            background: #f3f3f4;
+            background: #efefef;
+            padding-top: 20px;
         }
         .content{
+            position: relative;
+            background: #fff;
+            max-width: 881px;
             width: 80%;
             margin: auto;
-            padding: 50px 20px;
+            padding: 10px 0;
+        }
+        .arti-font{
+            position: fixed;
+            margin-top: -41px;
+            transform: translate(-100%, 0);
+        }
+        .font-op{
+            color: #ccc;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid #dcdcdc;
+        }
+        .font-small {
+            border-top: none;
+        }
+        .font-op:hover{
+            border: 1px solid #ccc;
+            cursor: pointer;
         }
         .title-container{
             text-align: center;
-            padding-bottom: 50px;
+            padding-bottom: 20px;
         }
         .title{
             margin: 20px 0;
-            font-size: 30px;
+            font-size: 25px;
         }
         .arti-desc{
             font-size: 20px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 2px solid rgb(0,154,97);
+            padding: 10px 0 10px 30px;
+            margin: 10px 0;
+            border-left: 5px solid rgb(0,154,97);
+        }
+        .arti-container{
+            padding: 10px 30px;
+        }
+        .arti-container>p{
+            text-indent: 20px;
         }
         .icon-time:before,.icon-23:before{
             color: #999;

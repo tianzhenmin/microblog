@@ -65,7 +65,6 @@ router.post('/right', function(req, res, next){
 
 router.post('/deleteOwnArticle', function(req, res, next){
     var del_id = parseInt(req.body.del_id);
-    console.log(del_id);
     db.query(`delete from articles where id=${del_id}`, function(err, rows){
         if(err) next(err);
         else res.send({status: 200});
@@ -79,7 +78,6 @@ router.get('/blog-detail/:id', function(req, res, next){
         if(err){
             next(err);
         } else {
-            console.log(rows[0].content);
             res.render('blog-detail', {title: `blog - ${rows[0].name}`, data:rows[0]})
         }
     })

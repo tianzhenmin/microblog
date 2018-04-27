@@ -1,0 +1,151 @@
+extends ../layout
+
+block content
+    section.content
+        include admin-left
+        section.show-pannel
+            -if(user)
+                div.chat-pannel
+                    div.friends-list
+                        div.friend-search
+                            input(type="text", style="width: 100%")
+                            i.iconfont.icon-sousuo
+                        div.friend-item.active
+                            img.friend-icon(src="/icons/jie.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/airilia.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/akali.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/casery.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/deles.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/lee.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/kainan.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/kaxiopya.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/kelie.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/luo.png")
+                            i.red-point.new
+                        div.friend-item
+                            img.friend-icon(src="/icons/shen.png")
+                            i.red-point.new
+                    div.message-pannel
+                        p#onlineUser 在线人数
+                        ul#messages
+
+                        div.ttt(action="")
+                            input#m(autocomplete="off")
+            -else
+                include noLogin
+        script(src="/socket.io/socket.io.js")
+        script(src="/javascripts/admin/admin-chat.js")
+
+        style.
+            .chat-pannel{
+                padding-top: 50px;
+                display: flex;
+                height: 100%;
+                width: 80%;
+                margin: auto;
+                height: 600px;
+            }
+            .friends-list{
+                flex: 0 0 25%;
+                overflow-y: scroll;
+            }
+            .friend-item{
+                position: relative;
+                height: 68px;
+                line-height: 68px;
+                padding: 4px;
+                background: #fff;
+                border-bottom: 1px solid #dcdcdc;
+            }
+            .friend-item:hover{
+                background: rgba(0, 0, 0, .6);
+                cursor: alias;
+            }
+            .friend-icon{
+                height: 60px;
+                margin: 4px;
+                border-radius: 50%;
+            }
+            .friend-search{
+                position: relative;
+            }
+            .friend-search input{
+                padding-right: 50px;
+            }
+            .icon-sousuo{
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translate(-20px, -80%);
+            }
+            .icon-sousuo:before{
+                font-size: 24px;
+            }
+            .message-pannel{
+                flex: 0 0 75%;
+                background: #838383;
+                margin: auto;
+                position: relative;
+                height: 100%;
+            }
+            .ttt{
+                position: absolute;
+                bottom: 10px;
+                width: calc(100% - 60px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .ttt input {
+                border: 0;
+                padding: 10px 0;
+                width: 100%;
+            }
+            .ttt button {
+                width: 9%;
+                background: rgb(130, 224, 255);
+                border: none;
+                padding: 10px;
+            }
+            #messages {
+                list-style-type:none;
+                margin: 0;
+                padding: 0;
+            }
+            #messages li {
+                padding: 5px 10px;
+            }
+            #messages li:nth-child(odd) {
+                background: #eee;
+            }
+            p{
+                padding:5px 10px;
+            }
+            .active{
+                background: rgba(0, 0, 0, .6);
+            }
+            .red-point{
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: red;
+                position: absolute;
+                right: 10px;.new
+            }

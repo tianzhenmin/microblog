@@ -27,11 +27,11 @@ var users = require('./routes/users');
 var home = require('./routes/home');
 var login = require('./routes/login');
 var personal = require('./routes/personal');
+var adminChat = require('./routes/chat');
 
 
 app.all("*",function(req,res,next){
     res.locals.user=req.session.user;
-    console.log(res.locals.user);
     next();
 })
 
@@ -42,6 +42,7 @@ app.use('/', login);
 app.use('/', index);
 app.use('/users', users);
 app.use('/admin', personal);
+app.use('/admin', adminChat);
 
 app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function (req, res, next) {
     // ueditor 客户发起上传图片请求
@@ -61,11 +62,14 @@ app.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function (req, re
     }
     // 客户端发起其它请求
     else {
-        // console.log('config.json')
         res.setHeader('Content-Type', 'application/json');
         res.redirect('/ueditor/jsp/config.json');
     }
 }));
+
+app.ready = function(server){
+    adminChat.prepareServer(server);
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

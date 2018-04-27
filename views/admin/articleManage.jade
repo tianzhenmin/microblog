@@ -33,7 +33,7 @@ block content
                                 p=val.tip
                             div.arti-title
                                 p
-                                    a(href="/blog-detail/#{val.id}_#{val.article_link_str}")=val.name
+                                    a(href="/blog-detail/#{val.id}_#{val.article_link_str}", title="点击查看")=val.name
                             div.arti-auth
                                 p=val.auth
                             div.arti-pub(format-data)

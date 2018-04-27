@@ -28,6 +28,10 @@
     font-size: 24px;
     text-align: center;
 }
+.del-info a{
+    color: #fff;
+    text-decoration: none;
+}
 .del-btn-box {
     width: 100%;
     position: absolute;
@@ -74,6 +78,7 @@
     background: #fff;
 }
 .article-oper{
+    font-size: 14px;
     width: calc(100% - 100px);
     margin: auto;
     margin-top: 60px;
@@ -129,10 +134,16 @@ input[type="checkbox"]{
 .arti-control i:hover{
     cursor: pointer;
 }
+.cal{
+    background: #efefef;
+}
 .cal b{
     background: #888;
     color: #fff;
     border-radius: 50%;
+    display: inline-block;
+    width: 20px;
+    text-align: center;
 }
 
 .arti-title p a{

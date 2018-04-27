@@ -31,7 +31,9 @@ $(document).on({
             success: function (data) {
                 // alert(data.filePath);
                 $this.prev().attr('src', '/images/' + data.filePath);
-                console.log(data.filePath);
+                if($('.show-pannel .user-info')){
+                    $('.show-pannel .user-info>img').attr('src', '/images/' + data.filePath);
+                }
             },
             error: function (err) {
                 console.log(err.message);

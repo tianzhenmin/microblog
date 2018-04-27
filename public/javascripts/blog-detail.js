@@ -33,8 +33,49 @@ $('.arti-auth').on('click', function(){
             $('.auth-desc').show();
         }
     })
+})
 
+var fontSelectors = [
+    '.title-content .iconfont',
+    '.title-content .timeline',
+    '.title-content .title',
+    '.title-content .arti-auth',
+    '.arti-desc',
+    '.arti-container'
+];
 
+$('.font-small').on('click', function(){
+    if($(this).hasClass('disabled')){
+        return;
+    }
+    var bodyFontSize = parseInt($('body').css('fontSize')) - 1;
+    $('body').css('fontSize', bodyFontSize + 'px');
+    fontSelectors.forEach(function (selector) {
+        $(selector).css('fontSize', (parseInt($(selector).css('fontSize')) - 1) + 'px');
+    });
+    if (bodyFontSize <= 12) {
+        $(this).addClass('disabled');
+    }
+    if ($(".font-big").hasClass('disabled')) {
+        $(".font-big").removeClass('disabled');
+    }
+})
+
+$('.font-big').on('click', function(){
+    if($(this).hasClass('disabled')){
+        return;
+    }
+    var bodyFontSize = parseInt($('body').css('fontSize')) + 1;
+    $('body').css('fontSize', bodyFontSize + 'px');
+    fontSelectors.forEach(function (selector) {
+        $(selector).css('fontSize', (parseInt($(selector).css('fontSize')) + 1) + 'px');
+    });
+    if (bodyFontSize >= 24) {
+        $(this).addClass('disabled');
+    }
+    if ($(".font-small").hasClass('disabled')) {
+        $(".font-small").removeClass('disabled');
+    }
 })
 
 $('.icon-chacha').on('click', function(){

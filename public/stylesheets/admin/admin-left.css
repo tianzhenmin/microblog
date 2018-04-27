@@ -33,8 +33,8 @@
 }
 .icon-con{
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     margin: auto;
 }
 .up-icon{
@@ -55,7 +55,7 @@
     text-align: center;
 }
 .blog-manage a{
-    font-size: 24px;
+    font-size: 18px;
     color: #dcdcdc;
     position: relative;
     display: inherit;
@@ -64,7 +64,7 @@
 }
 
 .blog-manage .sublist a{
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .blog-manage>a:after{

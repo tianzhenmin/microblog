@@ -12,43 +12,55 @@ block content
                             i.iconfont.icon-sousuo
                         div.friend-item.active
                             img.friend-icon(src="/icons/jie.png")
+                            p.friend-n 劫
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/airilia.png")
+                            p.friend-n 艾瑞莉亚
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/akali.png")
+                            p.friend-n 阿卡利
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/casery.png")
+                            p.friend-n 凯瑟琳
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/deles.png")
+                            p.friend-n 德莱厄斯
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/lee.png")
+                            p.friend-n 李青
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/kainan.png")
+                            p.friend-n 凯南
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/kaxiopya.png")
+                            p.friend-n 卡西奥佩娅
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/kelie.png")
+                            p.friend-n 克烈
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/luo.png")
+                            p.friend-n 洛
                             i.red-point.new
                         div.friend-item
                             img.friend-icon(src="/icons/shen.png")
+                            p.friend-n 肾
                             i.red-point.new
                     div.message-pannel
-                        p#onlineUser 在线人数
-                        ul#messages
-
-                        div.ttt(action="")
-                            input#m(autocomplete="off")
+                        p.friend-name
+                        //p#onlineUser 在线人数
+                        //ul#messages
+                        //
+                        //div.ttt(action="")
+                        //    input#m(autocomplete="off")
             -else
                 include noLogin
         script(src="/socket.io/socket.io.js")
@@ -69,6 +81,7 @@ block content
             }
             .friend-item{
                 position: relative;
+                display: flex;
                 height: 68px;
                 line-height: 68px;
                 padding: 4px;

@@ -2,16 +2,6 @@ var express = require('express');
 var router = express.Router();
 var db = require('./db.js');
 
-// var listItem = [
-//     {lan:'java编程', icon:'icon-java', category:'java', articals:['java从入门到放弃', 'java起源', '黑马java', 'java开发宝典']},
-//     {lan:'C编程', icon:'icon-C', category:'C', articals:['C语言入门', '基于C语言的OpenGL','C语言指针详解', '如果不了解这种用法，你真的学过C语言么']},
-//     {lan:'js编程', icon:'icon-socialjavascript', category:'js', articals:['JS 前台编程最方便的语言', '有人说js将会引领潮流，带你看看为什么', 'JS从入门到精通']},
-//     {lan:'C#编程', icon:'icon-chilun', category:'c', articals:['C++++的来源', 'C#全栈开发', 'C#应用大全', 'C#宝典']},
-//     {lan:'Python编程', icon:'icon-socialpython', category:'python', articals:['python为什么被称为最好的编程语言', '人工智能-Python', 'Python入门需知']},
-//     {lan:'HTML编程', icon:'icon-html5', category:'html', articals:['html发展史', 'H5与H4的区别与联系', '你真的了解H5？？']},
-//     {lan:'javaee编程', icon:'icon-java', category:'javaee', articals:['javaee异军突起', 'javaee Web 全站开发', '五分钟读懂javaee']}
-// ];
-
 var listItem = [];
 var listTip = [];
 
@@ -34,7 +24,6 @@ router.get('/', function(req, res, next) {
       title: '首页',
       listTip: listTip
   });
-  //console.log(req.session.user);
 });
 
 router.get('/funny', function(req, res, next){
@@ -71,6 +60,18 @@ router.post('/deleteOwnArticle', function(req, res, next){
     })
 })
 
+var getCommondsList = function(id){
+    db.query(`select u.username,u.icon,c.c_content,c.c_time from users u,articles a,commonds c where c.a_id=a.id and c.u_id=u.id and a.id=${id}`, function (err, rows) {
+        console.log(err);
+        if(err) {
+            next(err);
+        } else {
+            return rows;
+        }
+    })
+}
+
+
 router.get('/blog-detail/:id', function(req, res, next){
     var id_str = req.params.id;
     var id = parseInt(id_str.substring(0, id_str.indexOf('_')));
@@ -94,6 +95,21 @@ router.post('/showauth', function(req, res, next) {
             } else {
                 res.send({status: 200, result: rows[0]});
             }
+        }
+    })
+})
+
+router.post('/commond', function(req, res, next){
+    var a_id = parseInt(req.body.a_id),
+        u_id = parseInt(req.body.u_id),
+        content = req.body.content,
+        date = req.body.date;
+    console.log(a_id, u_id, content, date);
+    db.query(`insert into commonds (a_id,u_id,c_content,c_time) values (${a_id},${u_id},"${content}","${date}")`, function(err, rows){
+        if(err){
+            next(err);
+        } else {
+            res.send({status: 200});
         }
     })
 })

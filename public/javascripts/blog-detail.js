@@ -81,3 +81,41 @@ $('.font-big').on('click', function(){
 $('.icon-chacha').on('click', function(){
     $('.auth-desc').hide()
 })
+
+$('.sub-com').on('click', function(){
+    var a_id = $('.a_id').val();
+    var u_id = $('.u_id').val();
+    var content = $('.com-content').val();
+    var d= new Date();
+    var date = formatDate(d);
+    $.ajax({
+        type: 'post',
+        url: '/commond',
+        dataType: 'json',
+        data: {a_id: a_id, u_id: u_id, content: content, date: date},
+        success: function(data){
+            if(data.status == 200){
+                $('.com-content').val('');
+            }
+        }
+    })
+})
+
+var formatDate = function(date) {
+    var y = date.getFullYear(),
+        M = date.getMonth() + 1,
+        d = date.getDate(),
+        h = date.getHours(),
+        m = date.getMinutes(),
+        s = date.getSeconds();
+    var str = y + '-' + check(M) + '-' + check(d) + ' ' + check(h) + ':' + check(m) + ':' + check(s);
+    return str;
+}
+
+var check = function(str){
+    str=str.toString();
+    if(str.length<2){
+        str='0'+ str;
+    }
+    return str;
+}

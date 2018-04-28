@@ -138,6 +138,11 @@ footer{
   background-color: #000;
 }
 
+.change-color:hover{
+  color: #00B7FF;
+  cursor: pointer;
+}
+
 input[type="text"],
 input[type="password"] {
   box-sizing: border-box;

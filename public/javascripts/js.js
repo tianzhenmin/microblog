@@ -107,3 +107,7 @@ $(document).keyup(function (e) {//捕获文档对象的按键弹起事件
         if($('.pop-login').css('display') !== 'none'){postLoginInfo();}
     }
 });
+
+$('.change-color').on('click', function(){
+    $('header').css('background', '#' + ('000000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6));
+})

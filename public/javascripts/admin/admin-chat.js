@@ -40,8 +40,12 @@ $('#m').keydown(function (e) {
 })
 
 $('.friend-item').on('click', function(){
+    $('.message-pannel .friend-name').html($(this).find('.friend-n').html());
     $(this).addClass('active').siblings().removeClass('active');
     if($(this).find('.new').hasClass('red-point')){
         $(this).find('.new').removeClass('red-point');
     }
+})
+$(function(){
+    $('.message-pannel .friend-name').html($('.friend-item.active').find('.friend-n').html());
 })

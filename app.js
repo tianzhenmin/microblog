@@ -32,6 +32,7 @@ var adminChat = require('./routes/chat');
 
 app.all("*",function(req,res,next){
     res.locals.user=req.session.user;
+    console.log(res.locals.user);
     next();
 })
 

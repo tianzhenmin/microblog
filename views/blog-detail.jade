@@ -24,10 +24,14 @@ block content
                     img(src="/images/#{user.icon}", style="width: 40px; position: absolute;left: 40px;top: 0;transform: translate(0, -50%)")
                     input.u_id(type="hidden", value="#{user.id}")
                 -else
-                    div(style="width:40px; height:40px; position: absolute;left: 40px;top: 0;transform: translate(0, -50%);border: 1px solid #dcdcdc;border-radius:50%;line-height: 40px;text-align: center;background: #fff") 登录
+                    div.commond-log.login.pop 登录
                 div.commond-input
-                    textarea.com-content(placeholder="请开始你的表演", style="min-width: calc(100% - 40px);max-width: calc(100% - 40px);min-height: 100px;border: 10px;font-size: 18px;padding: 20px;border: 1px solid #dcdcdc;")
+                    textarea.com-content(placeholder="请开始你的表演")
                     p.sub-com bb一下
+                div(style="clear: both;")
+
+                section.commonds-list
+
 
 
         div.auth-desc
@@ -146,4 +150,55 @@ block content
         }
         .sub-com:hover{
             cursor: pointer;
+        }
+        .commond-log {
+            width:40px;
+            height:40px;
+            position: absolute;
+            left: 40px;
+            top: 0;
+            transform: translate(0, -50%);
+            border: 1px solid #dcdcdc;
+            border-radius:50%;
+            line-height: 40px;
+            text-align: center;
+            background: #fff;
+        }
+        .commond-log:hover {
+            cursor: pointer;
+            color: #fff;
+            background: #ff6600;
+        }
+        .com-content{
+            min-width: calc(100% - 40px);
+            max-width: calc(100% - 40px);
+            min-height: 100px;
+            border: 10px;
+            font-size: 18px;
+            padding: 20px;
+            border: 1px solid #dcdcdc;
+        }
+        .commonds-list{
+            margin-top: 50px;
+        }
+        .commond-item{
+            display: flex;
+            position: relative;
+            padding: 20px;
+            border-top: 1px dashed #e5e5e5;
+        }
+        .commond-icon{
+            padding: 0 10px;
+        }
+        .commond-icon img{
+            display: block;
+            width: 50px;
+        }
+        .commond-container{
+        }
+        .commond-time{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: silver;
         }

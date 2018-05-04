@@ -114,4 +114,15 @@ router.post('/commond', function(req, res, next){
     })
 })
 
+router.post('/getCommonts', function(req, res, nwxt){
+    var a_id = parseInt(req.body.a_id);
+    db.query(`select u.username,u.icon,c.c_content,c.c_time from users u,articles a,commonds c where c.a_id=a.id and c.u_id=u.id and a.id=${a_id} `, function(err, rows){
+        if(err) {
+            next(err);
+        } else {
+            res.send(rows);
+        }
+    })
+})
+
 module.exports = router;

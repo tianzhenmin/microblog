@@ -101,6 +101,34 @@ $('.sub-com').on('click', function(){
     })
 })
 
+$(function(){
+    var a_id = $('.a_id').val();
+    $.ajax({
+        type: 'post',
+        url: '/getCommonts',
+        dataType: 'json',
+        data: {a_id: a_id},
+        success: function(data){
+            console.log(data);
+            var tpl = ``;
+            for(var i = 0 ; i < data.length ; i ++) {
+                var dd = formatDate(new Date(data[i].c_time));
+                tpl += `<div class="commond-item">
+                            <div class="commond-icon">
+                                <img src="/images/${data[i].icon}"/>
+                            </div>
+                            <div class="commond-container">
+                                <p class="commond-user">${data[i].username}</p>
+                                <p class="commond-time">${dd}</p>
+                                <p class="commond-content">${data[i].c_content}</p>
+                            </div>
+                        </div>`
+            }
+            $('.commonds-list').append(tpl);
+        }
+    })
+})
+
 var formatDate = function(date) {
     var y = date.getFullYear(),
         M = date.getMonth() + 1,
